@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-STATUS = ((0, "Draft"), 
-          (1, "Published"), 
+STATUS = ((0, "Draft"),
+          (1, "Published"),
           (2, "Delete"))
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -15,8 +16,10 @@ class Post(models.Model):
     metades = models.CharField(max_length=300, default="new post")
     status = models.IntegerField(choices=STATUS, default=0)
 
-    class Meta:
-        ordering = ['-created_at']
 
-    def __str__(self):
-        return self.title
+class Meta:
+    ordering = ['-created_at']
+
+
+def __str__(self):
+    return self.title
